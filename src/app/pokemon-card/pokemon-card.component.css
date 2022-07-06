@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+.pokemon-card {
+  background: #eee;
+  border: 1px solid #c5c5c5;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 1px 6px rgb(32 33 36 / 28%);
+  border-color: rgba(223, 225, 229, 0);
+  margin: 10px;
+  border-top: 5px solid #3359ec;
+  border-bottom: 5px solid #3359ec;
+  font-family: 'Roboto', sans-serif;
+}

@@ -1,15 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {constants} from "../utils/constants";
 
 @Component({
   selector: 'app-pokemon-card',
   templateUrl: './pokemon-card.component.html',
   styleUrls: ['./pokemon-card.component.css']
 })
-export class PokemonCardComponent implements OnInit {
+export class PokemonCardComponent {
+  baseUrlPokemonStart: string = constants.URL_IMG_BASE_START;
+  baseUrlPokemonFinal: string = constants.URL_IMG_BASE_FINAL;
+  @Input() pokemon: string | undefined;
+  @Input() pokeId: number | undefined;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  getImagePokemon() {
+    const formattedNumber = this.leadingZero(this.pokeId!);
+    return this.baseUrlPokemonStart + formattedNumber + this.baseUrlPokemonFinal;
   }
 
+  leadingZero(str: string | number, size = 3): string {
+    let s = String(str);
+    while (s.length < (size || 2)) {
+      s = '0' + s;
+    }
+    return s;
+  }
 }
