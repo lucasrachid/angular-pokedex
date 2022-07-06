@@ -12,3 +12,8 @@
   border-bottom: 5px solid #3359ec;
   font-family: 'Roboto', sans-serif;
 }
+
+.pokemon-number {
+  color: grey;
+  font-size: 12px;
+}

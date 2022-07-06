@@ -1,6 +1,9 @@
 <div class="pokemon-card">
   <img [src]="getImagePokemon()"
        alt="Foto do {{this.pokemon}}" title="{{this.pokemon | titlecase}}"> <br>
+  <span class="pokemon-number">
+    Nº {{this.pokeId}}
+  </span> <br>
   <b>{{this.pokemon | titlecase}}</b>
 </div>
 
