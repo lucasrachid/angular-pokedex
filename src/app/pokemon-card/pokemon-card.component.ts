@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {constants} from "../utils/constants";
+import {Constants} from "../utils/constants";
 
 @Component({
   selector: 'app-pokemon-card',
@@ -7,8 +7,8 @@ import {constants} from "../utils/constants";
   styleUrls: ['./pokemon-card.component.css']
 })
 export class PokemonCardComponent {
-  baseUrlPokemonStart: string = constants.URL_IMG_BASE_START;
-  baseUrlPokemonFinal: string = constants.URL_IMG_BASE_FINAL;
+  baseUrlPokemonStart: string = Constants.URL_IMG_BASE_START;
+  baseUrlPokemonFinal: string = Constants.URL_IMG_BASE_FINAL;
   @Input() pokemon: string | undefined;
   @Input() pokeId: number | undefined;
 
