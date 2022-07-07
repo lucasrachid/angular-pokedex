@@ -1,7 +1,10 @@
-import {Component, OnInit, Output} from '@angular/core';
+import {Component, Inject, OnInit, Output, ViewChild} from '@angular/core';
 import {PokemonService} from "../services/pokemon.service";
 import {Constants} from "../utils/constants";
 import {PokemonModel} from "../models/pokemon.model";
+import {MAT_DIALOG_DATA, MatDialog} from "@angular/material/dialog";
+import {MatMenuTrigger} from "@angular/material/menu";
+import {DialogComponent} from "./dialog/dialog.component";
 
 @Component({
   selector: 'app-pokemon-list',
@@ -9,9 +12,16 @@ import {PokemonModel} from "../models/pokemon.model";
   styleUrls: ['./pokemon-list.component.css']
 })
 export class PokemonListComponent implements OnInit{
+
   pokemons: PokemonModel[] = [];
   @Output() pokeId: number = 1;
-  constructor(private pokemonService: PokemonService ) { }
+  @ViewChild('menuTrigger') menuTrigger = MatMenuTrigger;
+
+
+  constructor(private pokemonService: PokemonService,
+              private dialog: MatDialog,
+              // @Inject(MAT_DIALOG_DATA) public data: DialogComponent
+  ) { }
 
   ngOnInit(): void {
     this.getPokemonList();
@@ -22,7 +32,11 @@ export class PokemonListComponent implements OnInit{
     this.pokemonService.getDataListPokemons()
       .then(response => {
         console.log(response.results);
-        this.pokemons = response.results;
+        if(this.pokemons.length <= 0) {
+          this.pokemons = response.results;
+        } else {
+          this.pokemons = this.pokemons.concat(response.results);
+        }
     })
   }
 
@@ -33,4 +47,8 @@ export class PokemonListComponent implements OnInit{
       })
   }
 
+  openDialog() {
+    const dialogRef = this.dialog.open(DialogComponent, {restoreFocus: false});
+    dialogRef.afterClosed().subscribe(() => this.menuTrigger);
+  }
 }

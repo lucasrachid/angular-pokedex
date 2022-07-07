@@ -1,4 +1,16 @@
 <div class="pokemon-list">
-<app-pokemon-card *ngFor="let pokemon of pokemons; let i = index"
+  <app-pokemon-card *ngFor="let pokemon of pokemons; let i = index"
                   [pokemon]="pokemon.name" [pokeId]="i + 1"></app-pokemon-card>
 </div>
+<button mat-button [matMenuTriggerFor]="menu" #menuTrigger>Mais Opções</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="openDialog()">Abrir Dialog</button>
+  <button mat-menu-item (click)="getPokemonList()">Carregar Mais Pokemons</button>
+</mat-menu>
+
+
+<!--<div style="text-align: center; margin-top: 20px">-->
+<!--  <span (click)="getPokemonList()" class="load-more">Carregar Mais</span>-->
+<!--</div>-->
+
+

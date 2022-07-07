@@ -4,3 +4,13 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
+
+.load-more {
+  margin-top: 10px;
+  text-align: center;
+  border: 1px solid dodgerblue;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 10px
+}
+
